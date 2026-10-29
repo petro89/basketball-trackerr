@@ -110,7 +110,7 @@ h2{font-size:15px;margin:0;font-weight:680;letter-spacing:-.3px}
 .theme-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:370px){.theme-grid{gap:6px}.theme{padding:6px 5px 9px}.swatch{height:52px}.theme-title{font-size:10px}.theme small{font-size:8px}}
 
-</style>
+.theme-grid{grid-template-columns:repeat(3,minmax(0,1fr))}\n.lock.theme-ios26{background:linear-gradient(180deg,#172944,#6c8cb8 42%,#0d162b)!important}.lock.theme-ios26:before{animation:none;filter:blur(10px)}.lock.theme-ios26:after{display:none}.lock.theme-ios26 .glass-card{background:linear-gradient(135deg,#ffffff38,#ffffff0d);border-color:#ffffff65;backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3)}.theme.ios26 .swatch{background:linear-gradient(150deg,#c4e3ff,#5d7ba8 50%,#17233f)}\n</style>
 </head>
 <body>
 <div class="app">
@@ -129,7 +129,7 @@ h2{font-size:15px;margin:0;font-weight:680;letter-spacing:-.3px}
 <button class="theme blackplus active" data-theme="blackplus"><div class="swatch"></div><span class="theme-title">Black Plus <i class="check">✓</i></span><small>Тёмный неон</small></button>
 <button class="theme" data-theme="aurora"><div class="swatch aurora"></div><span class="theme-title">Aurora <i class="check">✓</i></span><small>Сияние и глубина</small></button>
 <button class="theme" data-theme="midnight"><div class="swatch midnight"></div><span class="theme-title">Midnight <i class="check">✓</i></span><small>Тёмный графит</small></button>
-<button class="theme" data-theme="rose"><div class="swatch rose"></div><span class="theme-title">Rose Ice <i class="check">✓</i></span><small>Розовый перламутр</small></button>
+<button class="theme" data-theme="rose"><div class="swatch rose"></div><span class="theme-title">Rose Ice <i class="check">✓</i></span><small>Розовый перламутр</small></button><button class="theme ios26" data-theme="ios26"><div class="swatch"></div><span class="theme-title">iOS 26 <i class="check">✓</i></span><small>Liquid Glass</small></button>
 </div></section>
 <section class="section"><div class="section-head"><h2>Настройки макета</h2><span class="hint">Настраивается сразу</span></div>
 <div class="settings">
@@ -146,11 +146,11 @@ const themes={
  blackplus:'radial-gradient(ellipse at 50% -8%,#6477a83b 0%,transparent 42%),radial-gradient(ellipse at 88% 36%,#425cff31 0%,transparent 32%),radial-gradient(ellipse at 10% 70%,#00d7ff1a 0%,transparent 35%),linear-gradient(155deg,#090b12 0%,#10131e 48%,#05070c 100%)',
  aurora:'radial-gradient(ellipse at 72% 14%,#f0dcff99 0%,transparent 25%),radial-gradient(ellipse at 13% 42%,#81d4ff9c 0%,transparent 34%),radial-gradient(ellipse at 82% 72%,#9276f0b0 0%,transparent 32%),linear-gradient(155deg,#566fbd,#293b76 47%,#181f49)',
  midnight:'radial-gradient(ellipse at 70% 12%,#9ba6c755 0%,transparent 27%),radial-gradient(ellipse at 20% 45%,#687ba866 0%,transparent 34%),linear-gradient(160deg,#414a66,#1e263d 48%,#080d1c)',
- rose:'radial-gradient(ellipse at 75% 12%,#ffe1f488 0%,transparent 25%),radial-gradient(ellipse at 18% 44%,#ffb8d999 0%,transparent 32%),radial-gradient(ellipse at 72% 76%,#c78be899 0%,transparent 30%),linear-gradient(160deg,#d18bc5,#805d9f 48%,#3b2d69)'
+ rose:'radial-gradient(ellipse at 75% 12%,#ffe1f488 0%,transparent 25%),radial-gradient(ellipse at 18% 44%,#ffb8d999 0%,transparent 32%),radial-gradient(ellipse at 72% 76%,#c78be899 0%,transparent 30%),linear-gradient(160deg,#d18bc5,#805d9f 48%,#3b2d69)',\n ios26:'radial-gradient(ellipse at 22% 18%,#b8dcff88 0%,transparent 36%),radial-gradient(ellipse at 82% 62%,#cbdcff44 0%,transparent 38%),linear-gradient(160deg,#819ec7,#30476b 52%,#10182c)'
 };
 function nativeCall(name,fallback){try{if(window.GlassBridge&&typeof GlassBridge[name]==='function')return GlassBridge[name]()}catch(e){}return fallback}
 function nativeSet(name,value){try{if(window.GlassBridge&&typeof GlassBridge[name]==='function')GlassBridge[name](value)}catch(e){}}
-function applyTheme(theme,save=true){if(!themes[theme])theme='blackplus';$('lock').style.background=themes[theme];$('lock').classList.toggle('theme-blackplus',theme==='blackplus');document.querySelectorAll('.theme').forEach(b=>{const active=b.dataset.theme===theme;b.classList.toggle('active',active)});const index=['blackplus','aurora','midnight','rose'].indexOf(theme)+1;document.querySelector('.section .section-head .hint').textContent=String(index).padStart(2,'0')+' / 04';if(save){localStorage.setItem('theme',theme);nativeSet('setTheme',theme)}}
+function applyTheme(theme,save=true){if(!themes[theme])theme='blackplus';$('lock').style.background=themes[theme];$('lock').classList.toggle('theme-blackplus',theme==='blackplus');$('lock').classList.toggle('theme-ios26',theme==='ios26');document.querySelectorAll('.theme').forEach(b=>{const active=b.dataset.theme===theme;b.classList.toggle('active',active)});const index=['blackplus','aurora','midnight','rose','ios26'].indexOf(theme)+1;document.querySelector('.section .section-head .hint').textContent=String(index).padStart(2,'0')+' / 05';if(save){localStorage.setItem('theme',theme);nativeSet('setTheme',theme)}}
 document.querySelectorAll('.theme').forEach(b=>b.addEventListener('click',()=>applyTheme(b.dataset.theme)));
 function setToggle(id,method,target,initial){const input=$(id);input.checked=initial;const apply=()=>{const value=input.checked;if(target)$(target).style.display=value?'flex':'none';localStorage.setItem(id,value?'1':'0');nativeSet(method,value)};input.addEventListener('change',apply);if(target)$(target).style.display=initial?'flex':'none'}
 const savedTheme=localStorage.getItem('theme')||'blackplus';applyTheme(savedTheme,false);
