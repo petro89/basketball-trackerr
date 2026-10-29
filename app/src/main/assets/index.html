@@ -95,6 +95,21 @@ h2{font-size:15px;margin:0;font-weight:680;letter-spacing:-.3px}
 @media(max-height:790px){.lock{min-height:530px}.lock-clock{margin-top:39px}.weather{margin-top:23px}.shortcuts{padding-top:18px}}
 @media(max-width:370px){.app{padding-left:12px;padding-right:12px}.lock{padding-left:13px;padding-right:13px}.lock-clock{font-size:66px}.swatch{height:58px}.theme{padding:7px 6px 10px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Modulify template adaptation: Black Plus — deep-black SaaS visual language */
+.lock.theme-blackplus{background:radial-gradient(ellipse at 50% -8%,#6477a83b 0%,transparent 42%),radial-gradient(ellipse at 88% 36%,#425cff31 0%,transparent 32%),radial-gradient(ellipse at 10% 70%,#00d7ff1a 0%,transparent 35%),linear-gradient(155deg,#090b12 0%,#10131e 48%,#05070c 100%)!important}
+.lock.theme-blackplus:before{background:conic-gradient(from 0deg at 50% 50%,transparent 0 22%,#b7c7ff13 30%,transparent 39% 57%,#00d9ff20 67%,transparent 77% 88%,#ffffff0b 95%,transparent);filter:blur(22px)}
+.lock.theme-blackplus .glass-card{background:linear-gradient(135deg,#ffffff14,#ffffff04 65%,#7e92ff0a);border-color:#c5d1ff2c;box-shadow:inset 0 1px 0 #ffffff1d,0 15px 36px #0008}
+.lock.theme-blackplus .album{background:radial-gradient(circle at 30% 20%,#c5d7ff,#6179df 34%,#222b5e 72%,#0a0e1c);box-shadow:inset 0 1px 0 #ffffff4a,0 8px 24px #02040a}
+.lock.theme-blackplus .sun-disc{background:linear-gradient(145deg,#e6faff,#6ccfff);box-shadow:0 0 25px #41c9ff99}
+.lock.theme-blackplus .cloud{background:linear-gradient(180deg,#e6f1ff,#879bc8)}
+.lock.theme-blackplus .shortcut{background:linear-gradient(145deg,#ffffff20,#ffffff07);border-color:#c8d5ff35}
+.lock.theme-blackplus .homebar{background:#f2f6ff}
+.theme.blackplus .swatch{background:radial-gradient(circle at 75% 18%,#6d8bff,#24315e 30%,transparent 63%),linear-gradient(145deg,#202638,#080a10 72%)}
+.theme.blackplus .swatch:before{background:conic-gradient(from 40deg,transparent,#91cfff62,transparent 45%,#899cff33,transparent)}
+.theme-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:370px){.theme-grid{gap:6px}.theme{padding:6px 5px 9px}.swatch{height:52px}.theme-title{font-size:10px}.theme small{font-size:8px}}
+
 </style>
 </head>
 <body>
@@ -109,9 +124,10 @@ h2{font-size:15px;margin:0;font-weight:680;letter-spacing:-.3px}
 <div id="music" class="glass-card music"><div class="album">♫</div><div class="track"><b>Midnight Memories</b><span>Glass Radio · Пример плеера</span><div class="track-progress"><i></i></div></div><button class="play" id="playButton" aria-label="Переключить воспроизведение">Ⅱ</button></div>
 <div class="shortcuts"><button class="shortcut" aria-label="Фонарик" id="flashButton">◉</button><button class="shortcut" aria-label="Камера" id="cameraButton">⌁</button></div><div class="homebar"></div><div class="caption">Интерактивный макет · не системная блокировка</div>
 </section></div>
-<section class="section"><div class="section-head"><h2>Выбери настроение</h2><span class="hint">01 / 03</span></div>
+<section class="section"><div class="section-head"><h2>Выбери настроение</h2><span class="hint">01 / 04</span></div>
 <div class="theme-grid">
-<button class="theme active" data-theme="aurora"><div class="swatch aurora"></div><span class="theme-title">Aurora <i class="check">✓</i></span><small>Сияние и глубина</small></button>
+<button class="theme blackplus active" data-theme="blackplus"><div class="swatch"></div><span class="theme-title">Black Plus <i class="check">✓</i></span><small>Тёмный неон</small></button>
+<button class="theme" data-theme="aurora"><div class="swatch aurora"></div><span class="theme-title">Aurora <i class="check">✓</i></span><small>Сияние и глубина</small></button>
 <button class="theme" data-theme="midnight"><div class="swatch midnight"></div><span class="theme-title">Midnight <i class="check">✓</i></span><small>Тёмный графит</small></button>
 <button class="theme" data-theme="rose"><div class="swatch rose"></div><span class="theme-title">Rose Ice <i class="check">✓</i></span><small>Розовый перламутр</small></button>
 </div></section>
@@ -122,21 +138,22 @@ h2{font-size:15px;margin:0;font-weight:680;letter-spacing:-.3px}
 <label class="row"><span class="row-left"><span class="row-icon">◷</span><span><b>24-часовой формат</b><small>Например, 18:42 вместо 6:42 PM</small></span></span><input id="clockToggle" class="switch" type="checkbox" checked></label>
 </div></section>
 <div class="notice"><div class="notice-icon">⌑</div><div><strong>Безопасный предпросмотр</strong>Это студия оформления, а не замена системной блокировки Android. PIN-код, отпечаток и защита Vivo остаются включёнными. Погода и музыкальный плеер здесь демонстрационные.</div></div>
-<div class="footer">GLASSLOCK STUDIO · BUILD 0.3.0<br>Liquid-glass layers · spring motion · shimmer · parallax-inspired transitions</div>
+<div class="footer">GLASSLOCK STUDIO · BUILD 0.4.0<br>Black Plus visual direction · animated glow · glass shimmer · spring motion</div>
 </div>
 <script>
 const $=id=>document.getElementById(id);
 const themes={
+ blackplus:'radial-gradient(ellipse at 50% -8%,#6477a83b 0%,transparent 42%),radial-gradient(ellipse at 88% 36%,#425cff31 0%,transparent 32%),radial-gradient(ellipse at 10% 70%,#00d7ff1a 0%,transparent 35%),linear-gradient(155deg,#090b12 0%,#10131e 48%,#05070c 100%)',
  aurora:'radial-gradient(ellipse at 72% 14%,#f0dcff99 0%,transparent 25%),radial-gradient(ellipse at 13% 42%,#81d4ff9c 0%,transparent 34%),radial-gradient(ellipse at 82% 72%,#9276f0b0 0%,transparent 32%),linear-gradient(155deg,#566fbd,#293b76 47%,#181f49)',
  midnight:'radial-gradient(ellipse at 70% 12%,#9ba6c755 0%,transparent 27%),radial-gradient(ellipse at 20% 45%,#687ba866 0%,transparent 34%),linear-gradient(160deg,#414a66,#1e263d 48%,#080d1c)',
  rose:'radial-gradient(ellipse at 75% 12%,#ffe1f488 0%,transparent 25%),radial-gradient(ellipse at 18% 44%,#ffb8d999 0%,transparent 32%),radial-gradient(ellipse at 72% 76%,#c78be899 0%,transparent 30%),linear-gradient(160deg,#d18bc5,#805d9f 48%,#3b2d69)'
 };
 function nativeCall(name,fallback){try{if(window.GlassBridge&&typeof GlassBridge[name]==='function')return GlassBridge[name]()}catch(e){}return fallback}
 function nativeSet(name,value){try{if(window.GlassBridge&&typeof GlassBridge[name]==='function')GlassBridge[name](value)}catch(e){}}
-function applyTheme(theme,save=true){if(!themes[theme])theme='aurora';$('lock').style.background=themes[theme];document.querySelectorAll('.theme').forEach(b=>{const active=b.dataset.theme===theme;b.classList.toggle('active',active)});const index=['aurora','midnight','rose'].indexOf(theme)+1;document.querySelector('.section .section-head .hint').textContent=String(index).padStart(2,'0')+' / 03';if(save){localStorage.setItem('theme',theme);nativeSet('setTheme',theme)}}
+function applyTheme(theme,save=true){if(!themes[theme])theme='blackplus';$('lock').style.background=themes[theme];$('lock').classList.toggle('theme-blackplus',theme==='blackplus');document.querySelectorAll('.theme').forEach(b=>{const active=b.dataset.theme===theme;b.classList.toggle('active',active)});const index=['blackplus','aurora','midnight','rose'].indexOf(theme)+1;document.querySelector('.section .section-head .hint').textContent=String(index).padStart(2,'0')+' / 04';if(save){localStorage.setItem('theme',theme);nativeSet('setTheme',theme)}}
 document.querySelectorAll('.theme').forEach(b=>b.addEventListener('click',()=>applyTheme(b.dataset.theme)));
 function setToggle(id,method,target,initial){const input=$(id);input.checked=initial;const apply=()=>{const value=input.checked;if(target)$(target).style.display=value?'flex':'none';localStorage.setItem(id,value?'1':'0');nativeSet(method,value)};input.addEventListener('change',apply);if(target)$(target).style.display=initial?'flex':'none'}
-const savedTheme=nativeCall('getTheme',localStorage.getItem('theme')||'aurora');applyTheme(savedTheme,false);
+const savedTheme=localStorage.getItem('theme')||'blackplus';applyTheme(savedTheme,false);
 setToggle('musicToggle','setMusicVisible','music',nativeCall('getMusicVisible',localStorage.getItem('musicToggle')!=='0'));
 setToggle('weatherToggle','setWeatherVisible','weather',nativeCall('getWeatherVisible',localStorage.getItem('weatherToggle')!=='0'));
 const clock24=nativeCall('get24Hour',localStorage.getItem('clockToggle')!=='0');$('clockToggle').checked=clock24;
@@ -144,7 +161,7 @@ $('clockToggle').addEventListener('change',()=>{localStorage.setItem('clockToggl
 function updateClock(){const now=new Date();const use24=$('clockToggle').checked;$('clock').textContent=new Intl.DateTimeFormat(navigator.language||'ru-RU',{hour:'numeric',minute:'2-digit',hour12:!use24}).format(now);$('tiny-time').textContent=new Intl.DateTimeFormat(navigator.language||'ru-RU',{hour:'2-digit',minute:'2-digit',hour12:false}).format(now);$('date').textContent=new Intl.DateTimeFormat('ru-RU',{weekday:'long',day:'numeric',month:'long'}).format(now)}
 updateClock();setInterval(updateClock,15000);
 let playing=true;$('playButton').addEventListener('click',()=>{playing=!playing;$('playButton').textContent=playing?'Ⅱ':'▶';$('playButton').style.transform=playing?'scale(1)':'scale(.94)';});
-const lock=$('lock');let startX=0,startY=0;lock.addEventListener('touchstart',e=>{const t=e.changedTouches[0];startX=t.clientX;startY=t.clientY},{passive:true});lock.addEventListener('touchend',e=>{const t=e.changedTouches[0];const dx=t.clientX-startX,dy=t.clientY-startY;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.25){const list=['aurora','midnight','rose'];const current=list.indexOf(document.querySelector('.theme.active').dataset.theme);applyTheme(list[(current+(dx<0?1:2))%3]);lock.animate([{transform:'translateX('+(dx<0?'-':'')+'8px)',filter:'brightness(1.08)'},{transform:'translateX(0)',filter:'brightness(1)'}],{duration:420,easing:'cubic-bezier(.2,.85,.25,1)'})}},{passive:true});
+const lock=$('lock');let startX=0,startY=0;lock.addEventListener('touchstart',e=>{const t=e.changedTouches[0];startX=t.clientX;startY=t.clientY},{passive:true});lock.addEventListener('touchend',e=>{const t=e.changedTouches[0];const dx=t.clientX-startX,dy=t.clientY-startY;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.25){const list=['blackplus','aurora','midnight','rose'];const current=list.indexOf(document.querySelector('.theme.active').dataset.theme);applyTheme(list[(current+(dx<0?1:3))%4]);lock.animate([{transform:'translateX('+(dx<0?'-':'')+'8px)',filter:'brightness(1.08)'},{transform:'translateX(0)',filter:'brightness(1)'}],{duration:420,easing:'cubic-bezier(.2,.85,.25,1)'})}},{passive:true});
 function pressFeedback(el){el.addEventListener('click',()=>{el.animate([{transform:'scale(1)'},{transform:'scale(.86) rotate(-7deg)'},{transform:'scale(1) rotate(0)'}],{duration:420,easing:'cubic-bezier(.18,1.5,.3,1)'})})}
 pressFeedback($('flashButton'));pressFeedback($('cameraButton'));
 if(localStorage.getItem('musicToggle')==='0'&&!nativeCall('getMusicVisible',true))$('music').style.display='none';
