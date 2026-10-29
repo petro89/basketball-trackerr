@@ -19,8 +19,18 @@ h1{font-size:19px;letter-spacing:-.5px;margin:0;font-weight:760}
 .pill{border:1px solid var(--line);background:#ffffff12;border-radius:99px;padding:8px 11px;font-size:11px;color:#e8efff}
 h2{font-size:15px;margin:8px 2px 12px;font-weight:650;letter-spacing:-.2px}
 .preview-wrap{padding:7px;border:1px solid #ffffff22;border-radius:35px;background:linear-gradient(145deg,#ffffff26,#ffffff07);box-shadow:0 24px 65px #0005,inset 0 1px 0 #ffffff42}
-.lock{position:relative;overflow:hidden;min-height:440px;border-radius:29px;padding:23px 19px 17px;display:flex;flex-direction:column;align-items:center;text-align:center;background:radial-gradient(ellipse at 75% 12%,#e5d9ff88 0%,transparent 25%),radial-gradient(ellipse at 18% 44%,#82c8ff99 0%,transparent 32%),radial-gradient(ellipse at 72% 76%,#9272e899 0%,transparent 30%),linear-gradient(160deg,#5369b5,#24396e 44%,#1b234c);transition:background .35s ease}
-.lock:before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 160deg at 50% 45%,transparent 0 28%,#ffffff18 35%,transparent 44% 66%,#b7c9ff22 73%,transparent 80%);filter:blur(28px);animation:float 12s linear infinite}
+.lock{position:relative;isolation:isolate;overflow:hidden;min-height:440px;border-radius:29px;padding:23px 19px 17px;display:flex;flex-direction:column;align-items:center;text-align:center;background:radial-gradient(ellipse at 75% 12%,#e5d9ff88 0%,transparent 25%),radial-gradient(ellipse at 18% 44%,#82c8ff99 0%,transparent 32%),radial-gradient(ellipse at 72% 76%,#9272e899 0%,transparent 30%),linear-gradient(160deg,#5369b5,#24396e 44%,#1b234c);transition:background .35s ease}
+.lock:before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 160deg at 50% 45%,transparent 0 28%,#ffffff22 35%,transparent 44% 66%,#b7c9ff30 73%,transparent 80%);filter:blur(28px);animation:float 18s linear infinite}
+.lock:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 20%,#ffffff12 35%,transparent 48%);transform:translateX(-120%);animation:glassSweep 9s ease-in-out infinite;pointer-events:none}
+@keyframes glassSweep{0%,62%{transform:translateX(-120%)}82%,100%{transform:translateX(120%)}}
+.glass-card{transition:transform .42s cubic-bezier(.2,.8,.2,1),background .42s ease,border-color .42s ease;will-change:transform}
+.glass-card:active{transform:scale(.985)}
+.theme,.row,.shortcut,.pill{transition:transform .28s cubic-bezier(.2,.8,.2,1),background .28s ease,border-color .28s ease,box-shadow .28s ease}
+.theme:active,.shortcut:active{transform:scale(.96)}
+.theme:focus-visible,.switch:focus-visible{outline:2px solid #d8e7ff;outline-offset:3px}
+.row:active{background:#ffffff14}
+.lock-clock{transition:letter-spacing .45s cubic-bezier(.2,.8,.2,1),opacity .25s ease}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 .lock>*{position:relative}
 @keyframes float{to{transform:rotate(360deg)}}
 .lock-top{width:100%;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#ffffffd9}
@@ -74,7 +84,7 @@ h2{font-size:15px;margin:8px 2px 12px;font-weight:650;letter-spacing:-.2px}
 <body>
 <div class="app">
   <header class="top">
-    <div class="brand"><div class="logo">◈</div><div><h1>GlassLock Studio</h1><div class="sub">LIQUID GLASS · PERSONALIZE</div></div></div>
+    <div class="brand"><div class="logo">◈</div><div><h1>GlassLock Studio</h1><div class="sub">LIQUID GLASS · MOTION STUDY</div></div></div>
     <div class="pill">PREVIEW</div>
   </header>
   <h2>Экран блокировки</h2>
@@ -107,7 +117,7 @@ h2{font-size:15px;margin:8px 2px 12px;font-weight:650;letter-spacing:-.2px}
     </div>
   </section>
   <div class="notice"><strong>🔒 Важно о безопасности</strong>Это безопасная студия оформления и предпросмотра, а не замена системной блокировки Android. PIN-код, отпечаток и защита Vivo остаются включёнными. Мы не просим отключать их и не сохраняем пароли.</div>
-  <div class="footer">GlassLock Studio · build 0.1.0<br>Оформление вдохновлено эстетикой Liquid Glass и плавными переходами 60fps.design.</div>
+  <div class="footer">GlassLock Studio · build 0.2.0<br>Стиль Glass & Layered · плавные переходы, blur и spring-inspired motion.</div>
 </div>
 <script>
 const $=id=>document.getElementById(id);
