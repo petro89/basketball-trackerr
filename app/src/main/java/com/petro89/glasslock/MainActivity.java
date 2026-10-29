@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.graphics.Color;
 import android.view.View;
 import android.webkit.JavascriptInterface;
-import android.webkit.WebChromeClient;\nimport android.webkit.ValueCallback;\nimport android.net.Uri;\nimport android.content.Intent;
+import android.webkit.WebChromeClient;
+import android.webkit.ValueCallback;
+import android.net.Uri;
+import android.content.Intent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -13,7 +16,8 @@ import android.content.SharedPreferences;
 
 public class MainActivity extends Activity {
     private WebView webView;
-    private SharedPreferences prefs;\n    private ValueCallback<Uri[]> wallpaperCallback;
+    private SharedPreferences prefs;
+    private ValueCallback<Uri[]> wallpaperCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +37,29 @@ public class MainActivity extends Activity {
         settings.setSupportZoom(false);
         settings.setBuiltInZoomControls(false);
         webView.setWebViewClient(new WebViewClient());
-        webView.setWebChromeClient(new WebChromeClient() {\n            @Override\n            public boolean onShowFileChooser(WebView view, ValueCallback<Uri[]> callback, FileChooserParams params) {\n                wallpaperCallback = callback;\n                startActivityForResult(params.createIntent(), 4107);\n                return true;\n            }\n        });
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onShowFileChooser(WebView view, ValueCallback<Uri[]> callback, FileChooserParams params) {
+                wallpaperCallback = callback;
+                startActivityForResult(params.createIntent(), 4107);
+                return true;
+            }
+        });
         webView.addJavascriptInterface(new SettingsBridge(), "GlassBridge");
         setContentView(webView);
         webView.loadUrl("file:///android_asset/index.html");
     }
 
-    @Override\n    protected void onActivityResult(int requestCode, int resultCode, Intent data) {\n        super.onActivityResult(requestCode, resultCode, data);\n        if (requestCode == 4107 && wallpaperCallback != null) {\n            wallpaperCallback.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, data));\n            wallpaperCallback = null;\n        }\n    }\n\n    private class SettingsBridge {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 4107 && wallpaperCallback != null) {
+            wallpaperCallback.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, data));
+            wallpaperCallback = null;
+        }
+    }
+
+    private class SettingsBridge {
         @JavascriptInterface
         public String getTheme() {
             return prefs.getString("theme", "aurora");
